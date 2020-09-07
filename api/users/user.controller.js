@@ -61,7 +61,7 @@ module.exports = {
           result.password = undefined;
 
           //generating json token
-          const jsontoken = sign ({result:results.email},process.env.SECRET_KEY,{
+          const jsontoken = sign ({result:results.email},'secretkey',{
 
             expiresIn:'1h'
           });
