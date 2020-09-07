@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { create, getUsers, getUserByEmail } = require("./user.service");
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const { sign }= require('jsonwebtoken');
@@ -60,7 +61,7 @@ module.exports = {
           result.password = undefined;
 
           //generating json token
-          const jsontoken = sign ({result:results},"secretkey",{
+          const jsontoken = sign ({result:results.email},process.env.SECRET_KEY,{
 
             expiresIn:'1h'
           });

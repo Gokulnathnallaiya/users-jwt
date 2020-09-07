@@ -6,6 +6,8 @@ const { verifyToken } = require('../../auth/tokenValidation')
 
 router.post("/register",register);
 router.post("/login",login);
+
+//jwt verification saample api
 router.get("/users",verifyToken,users);
 
 module.exports = router;
