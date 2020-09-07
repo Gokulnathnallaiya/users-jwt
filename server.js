@@ -16,13 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("",userRouter);
 
-app.get("/",(req,res)=>{
 
-    res.json({
-        success:1,
-        message:"App working successfuly"
-    })
-})
 
 app.listen(port,()=>{
     console.log('server Up and running ')
