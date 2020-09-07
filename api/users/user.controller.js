@@ -58,7 +58,7 @@ module.exports = {
       const result = body.password === results[0].password;
       console.log(body.password)
       console.log(results[0].password)
-      console.log(results)
+      
       console.log(result)
 
       if (result) {
