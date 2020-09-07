@@ -9,6 +9,14 @@ const pool = mysql.createPool({
     password:'9emiJvMZ3e',
     database:'sql12363614',
 
+
+
+    // host:'localhost',
+    // port:'3306',
+    // user:'root',
+    // password:'',
+    // database:'test',
+
   // host: process.env.MYSQL_HOST,
   // port: process.env.MYSQL_PORT,
   // user: process.env.MYSQL_USER,

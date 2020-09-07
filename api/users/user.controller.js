@@ -2,6 +2,7 @@ require("dotenv").config();
 const { create, getUsers, getUserByEmail } = require("./user.service");
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const { sign }= require('jsonwebtoken');
+
 module.exports = {
   register: (req, res) => {
     const body = req.body;
@@ -55,6 +56,10 @@ module.exports = {
       }
       //verifying password with database..
       const result = compareSync(body.password, results[0].password);
+      console.log(body.password)
+      console.log(results[0].password)
+      console.log(results)
+      console.log(result)
 
       if (result) {
           //making passwords as undefined for security purpose
