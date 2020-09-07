@@ -21,8 +21,8 @@ module.exports = {
         });
       } else {
         //generating  hashed password to store in database
-        const salt = genSaltSync(10);
-        body.password = hashSync(body.password, salt);
+        // const salt = genSaltSync(10);
+        // body.password = hashSync(body.password, salt);
         create(body, (error, results) => {
           if (error) {
             console.log(error);
@@ -55,7 +55,7 @@ module.exports = {
         });
       }
       //verifying password with database..
-      const result = compareSync(body.password, results[0].password);
+      const result = body.password === results[0].password;
       console.log(body.password)
       console.log(results[0].password)
       console.log(results)
