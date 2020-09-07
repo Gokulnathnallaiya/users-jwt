@@ -1,7 +1,6 @@
 const { create, getUsers, getUserByEmail } = require("./user.service");
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
-const pool = require("../../config/database");
-
+const { sign }= require('jsonwebtoken');
 module.exports = {
   register: (req, res) => {
     const body = req.body;
@@ -12,12 +11,14 @@ module.exports = {
           data: "unexpected error occured",
         });
       }
+      //checking wheather the user is already registered
       if (result.length!==0) {
         return res.json({
           success: 0,
           data: "user already registered",
         });
       } else {
+        //generating  hashed password to store in database
         const salt = genSaltSync(10);
         body.password = hashSync(body.password, salt);
         create(body, (error, results) => {
@@ -44,21 +45,37 @@ module.exports = {
       if (err) {
         console.log(err);
       }
+      
       if (!results) {
         return res.json({
           success: 0,
           data: "User Not found",
         });
       }
+      //verifying password with database..
       const result = compareSync(body.password, results[0].password);
 
       if (result) {
+          //making passwords as undefined for security purpose
+          result.password = undefined;
+
+          //generating json token
+          const jsontoken = sign ({result:results},"secretkey",{
+
+            expiresIn:'1h'
+          });
+          return res.json ({
+              success:1,
+              message:'Loggged in successfully',
+              token:jsontoken
+          })
+
+
+      } 
+      
+      else {
         return res.json({
-          msg: "Logged in successfully",
-        });
-      } else {
-        return res.json({
-          success: 1,
+          success: 0,
           data: "invalid email or password",
         });
       }
