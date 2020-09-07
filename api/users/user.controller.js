@@ -55,7 +55,7 @@ module.exports = {
         });
       }
       //verifying password with database..
-      const result = body.password === results[0].password;
+      const result = body.password == results[0].password;
       console.log(body.password)
       console.log(results[0].password)
       
