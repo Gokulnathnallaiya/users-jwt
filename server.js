@@ -18,6 +18,6 @@ app.use("",userRouter);
 
 
 
-app.listen(port,()=>{
+app.listen(3000,()=>{
     console.log('server Up and running ')
 })
