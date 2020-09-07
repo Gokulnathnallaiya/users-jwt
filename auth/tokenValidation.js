@@ -9,7 +9,7 @@ module.exports = {
     if (token) {
       //removing bearer from token
       token = token.slice(7);
-      jwt.verify(token, 'secretkey', (err, decoded) => {
+      jwt.verify(token,process.env.SECRET_KEY, (err, decoded) => {
         if (err) {
           return res.json({
             success: 0,
