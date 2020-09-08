@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const userRouter = require("./api/users/user.router");
 
-const port = 3000 || process.env.PORT ;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
