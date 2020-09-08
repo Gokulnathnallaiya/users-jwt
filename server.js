@@ -5,11 +5,13 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
+
 const userRouter = require("./api/users/user.router");
 
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));

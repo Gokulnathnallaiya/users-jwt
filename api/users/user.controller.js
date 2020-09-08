@@ -2,6 +2,10 @@ require("dotenv").config();
 const { create, getUsers, getUserByEmail } = require("./user.service");
 const { hashSync, genSaltSync, compareSync, compare } = require("bcrypt");
 const { sign }= require('jsonwebtoken');
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 module.exports = {
   register: (req, res) => {
     const body = req.body;
