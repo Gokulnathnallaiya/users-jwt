@@ -66,7 +66,7 @@ module.exports = {
           result.password = undefined;
 
           //generating json token
-          const jsontoken = sign ({result:results},process.env.SECRET_KEY,{
+          const jsontoken = sign ({result:results},process.env.JWT_KEY,{
 
             expiresIn:'1h'
           });
