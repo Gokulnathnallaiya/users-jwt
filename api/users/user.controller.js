@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { create, getUsers, getUserByEmail } = require("./user.service");
-const { hashSync, genSaltSync, compareSync } = require("bcrypt");
+const { hashSync, genSaltSync, compareSync, compare } = require("bcrypt");
 const { sign }= require('jsonwebtoken');
 module.exports = {
   register: (req, res) => {
@@ -20,8 +20,8 @@ module.exports = {
         });
       } else {
         //generating  hashed password to store in database
-        const salt = genSaltSync(10);
-        body.password = hashSync(body.password, salt);
+        // const salt = genSaltSync(10);
+        // body.password = hashSync(body.password, salt);
         create(body, (error, results) => {
           if (error) {
             console.log(error);
@@ -41,6 +41,7 @@ module.exports = {
 
   login: (req, res) => {
     const body = req.body;
+    console.log(body)
 
     getUserByEmail(body.email, (err, results, fields) => {
       if (err) {
@@ -54,7 +55,9 @@ module.exports = {
         });
       }
       //verifying password with database..
-      const result = compareSync(body.password, results[0].password);
+      const result = body.password === results[0].password
+      console.log(results[0].password)
+
 
       if (result) {
           //making passwords as undefined for security purpose
