@@ -41,7 +41,7 @@ module.exports = {
 
   login: (req, res) => {
     const body = req.body;
-    console.log(body)
+    
 
     getUserByEmail(body.email, (err, results, fields) => {
       if (err) {
@@ -56,7 +56,7 @@ module.exports = {
       }
       //verifying password with database..
       const result = body.password === results[0].password
-      console.log(results[0].password)
+      
 
 
       if (result) {
