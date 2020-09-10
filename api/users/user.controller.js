@@ -58,6 +58,17 @@ module.exports = {
       }
       //verifying password with database..
       const result = body.password === results[0].password
+
+      //verifying user role
+      if (body.role !== results[0].role){
+
+        return res.status(403).json({
+          success:0,
+          message: 'Role Mismatch. Accees denied !!',
+        })
+
+
+      }
       
 
 
