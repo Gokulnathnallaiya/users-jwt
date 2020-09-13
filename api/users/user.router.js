@@ -1,4 +1,4 @@
-const { register,login,users} =require('./user.controller');
+/*const { register,login,users} =require('./user.controller');
 const router = require("express").Router();
 
 const { verifyToken } = require('../../auth/tokenValidation')
@@ -17,3 +17,5 @@ router.get("/",verifyToken,(req,res)=>{
 })
 
 module.exports = router;
+
+*/

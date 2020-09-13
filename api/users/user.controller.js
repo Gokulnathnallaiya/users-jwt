@@ -1,3 +1,5 @@
+/*
+
 require("dotenv").config();
 const { create, getUsers, getUserByEmail } = require("./user.service");
 const { hashSync, genSaltSync, compareSync, compare } = require("bcrypt");
@@ -114,3 +116,5 @@ module.exports = {
     });
   },
 };
+
+*/
