@@ -56,7 +56,7 @@ passport.use(new GoogleStrategy({
 ));
 
 
-
+//
 passport.serializeUser(function(user, cb) {
     console.log('I should have jack ')
     cb(null, user);
