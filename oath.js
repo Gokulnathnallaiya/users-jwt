@@ -157,7 +157,7 @@ function CheckUser(input){
     return false
 }
 console.log(DATA)
-const port = process.env.PORT || 5000
+const port = process.env.PORT 
 app.listen( port, ()=>{
     console.log(`Sever ARG0 listening on port ${port}`)
 })
