@@ -46,7 +46,7 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 passport.use(new GoogleStrategy({
     clientID: "187895093455-eqss0arll7079s387dhojlqibovcs322.apps.googleusercontent.com",
     clientSecret: "LD8Iu8TyGqwPVH64l3lzpLfg",
-    callbackURL: "http://localhost:5000/googleRedirect"
+    callbackURL: "https://express-sql-app.herokuapp.com/googleRedirect"
   },
   function(accessToken, refreshToken, profile, cb) {
       //console.log(accessToken, refreshToken, profile)
