@@ -20,7 +20,7 @@ exports.register = (req,res)=>{
     }
     User.create(user)
     .then((data)=>{
-        res.send(data);
+        res.send({success:1,data});
     })
     .catch((err)=>{
         res.status(500).send({
