@@ -51,6 +51,7 @@ exports.login = (req,res)=>{
                 expiresIn:'1h'
               });
             res.send({
+                success:1,
                 message : "Logged in successfully",
                 Token : jsontoken
             })
@@ -58,6 +59,7 @@ exports.login = (req,res)=>{
         }
         else{
             res.send({
+                success:0,
                 message : "Invaid Email or Password"
             })
         }
