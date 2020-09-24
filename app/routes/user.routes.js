@@ -4,9 +4,10 @@ module.exports = (app) =>{
     const users = require ("../controllers/user.controller");
     var router = require("express").Router();
 
-    router.get("/",verifyToken,users.testapi);
+    router.get("/",users.testapi);
     router.post("/register",users.register);
     router.post("/login",users.login);
+    router.post("/addproduct",users.addproduct);
 
 
     app.use("",router)

@@ -46,7 +46,7 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 passport.use(new GoogleStrategy({
     clientID: "187895093455-eqss0arll7079s387dhojlqibovcs322.apps.googleusercontent.com",
     clientSecret: "LD8Iu8TyGqwPVH64l3lzpLfg",
-    callbackURL: "https://express-sql-app.herokuapp.com/googleRedirect"
+    callbackURL: "/googleRedirect"
   },
   function(accessToken, refreshToken, profile, cb) {
       //console.log(accessToken, refreshToken, profile)
@@ -158,6 +158,6 @@ function CheckUser(input){
 }
 console.log(DATA)
 const port = process.env.PORT 
-app.listen( port, ()=>{
+app.listen( 3000, ()=>{
     console.log(`Sever ARG0 listening on port ${port}`)
 })

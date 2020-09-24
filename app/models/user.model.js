@@ -1,8 +1,8 @@
-const { sequelize, Sequelize } = require(".");
+const { DataTypes, ARRAY } = require('sequelize');
 
 module.exports = (sequelize,Sequelize)=>{
 
-    const User = sequelize.define("users-db",{
+    const User = sequelize.define("users",{
         name:{
             type:Sequelize.STRING
         },
@@ -15,7 +15,14 @@ module.exports = (sequelize,Sequelize)=>{
         },
         role:{
             type:Sequelize.STRING
+        },
+        products: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: false,
+            defaultValue:[]
+            
         }
+        
     });
     return User;
 

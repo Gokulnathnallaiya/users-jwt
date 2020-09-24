@@ -1,12 +1,20 @@
 const db = require("../models");
 const { sign }= require('jsonwebtoken');
 const { json } = require("body-parser");
+const Sequelize = require('sequelize');
+
 
 
 const User = db.user;
 const op = db.Sequelize.Op;
 
 exports.register = (req,res)=>{
+    User.findAll ({where : { email : req.body.email }}).then(user=>{if(user){
+        return res.status(409).send({
+            success:0,
+            message:"user Already registered"
+        })
+    }})
     if (!req.body){
         return res.status(500).send({
             message:"Content cannot be empty"
@@ -17,6 +25,7 @@ exports.register = (req,res)=>{
         email: req.body.email,
         password : req.body.password,
         role : req.body.role,
+        
     }
     User.create(user)
     .then((data)=>{
@@ -82,9 +91,24 @@ exports.login = (req,res)=>{
 }
 
 exports.testapi = (req,res)=>{
-    res.send({
+    User.findAll().then(function(users){
+        
+        res.send(users);
+      }).catch(function(err){
+        console.log('Oops! something went wrong, : ', err);
+      });
+}
 
-        message : "App Working Successfully"
+exports.addproduct = (req,res)=>{
+    User.findOne({
+        where: {
+          email: req.body.email
+        }
+      })
+      .then (user=>{
+        let temp = JSON.parse(user.products);
+        temp.push(req.body.item)
+        user.update({products:temp}).then(updatedrecord=>res.send(JSON.stringify(updatedrecord)))
+      })
 
-    })
 }
