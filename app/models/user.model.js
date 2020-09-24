@@ -18,7 +18,7 @@ module.exports = (sequelize,Sequelize)=>{
         },
         products: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false,
+            
             defaultValue:[]
             
         }

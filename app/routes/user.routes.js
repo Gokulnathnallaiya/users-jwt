@@ -8,6 +8,7 @@ module.exports = (app) =>{
     router.post("/register",users.register);
     router.post("/login",users.login);
     router.post("/addproduct",users.addproduct);
+    router.post("/findbyemail",users.findbyemail);
 
 
     app.use("",router)

@@ -2,6 +2,7 @@ const db = require("../models");
 const { sign }= require('jsonwebtoken');
 const { json } = require("body-parser");
 const Sequelize = require('sequelize');
+const { user } = require("../models");
 
 
 
@@ -109,6 +110,23 @@ exports.addproduct = (req,res)=>{
         let temp = JSON.parse(user.products);
         temp.push(req.body.item)
         user.update({products:temp}).then(updatedrecord=>res.send(JSON.stringify(updatedrecord)))
-      })
+      }).catch(function(err){
+        console.log('Oops! something went wrong, : ', err);
+      });
+
+}
+
+exports.findbyemail = (req,res)=>{
+
+    user.findOne({
+        where:{
+            email:req.body.email
+        }
+    })
+    .then(user=>{
+        res.send(JSON.stringify(user))
+    }).catch(function(err){
+        console.log('Oops! something went wrong, : ', err);
+      });
 
 }
