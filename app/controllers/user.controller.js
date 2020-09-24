@@ -10,12 +10,12 @@ const User = db.user;
 const op = db.Sequelize.Op;
 
 exports.register = (req,res)=>{
-    User.findAll ({where : { email : req.body.email }}).then(user=>{if(user){
-        return res.status(409).send({
-            success:0,
-            message:"user Already registered"
-        })
-    }})
+    // User.findAll ({where : { email : req.body.email }}).then(user=>{if(user){
+    //     return res.status(409).send({
+    //         success:0,
+    //         message:"user Already registered"
+    //     })
+    // }})
     if (!req.body){
         return res.status(500).send({
             message:"Content cannot be empty"
