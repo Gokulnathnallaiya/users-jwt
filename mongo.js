@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/posts',postRoutes);
 app.use('/user',userRoutes);
 
+const port = process.env.PORT || 3000;
+
 
 mongoose.connect(process.env.mongo_connection,{ useUnifiedTopology: true, useNewUrlParser: true },()=>{
     console.log('connected')
@@ -36,7 +38,7 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log('server up and running')
 })
 
