@@ -29,9 +29,10 @@ router.post("/register", async (req, res) => {
       success:1,
       email: newUser.email,
       role: newUser.role,
+      message:"Account created successfully"
     });
   } catch (err) {
-    res.json({ message: err });
+    res.json({ message: "An error occured" });
   }
 });
 
@@ -55,7 +56,7 @@ router.post("/login", async (req, res) => {
     }
   } catch (err) {
     res.json({
-      message: err,
+      message: "An error occured",
     });
   }
 });
