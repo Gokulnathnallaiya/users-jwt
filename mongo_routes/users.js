@@ -16,6 +16,7 @@ router.post("/register", async (req, res) => {
   try {
     const newUser = await user.save();
     res.status(200).json({
+      success:1,
       email: newUser.email,
       role: newUser.role,
     });
@@ -38,7 +39,7 @@ router.post("/login", async (req, res) => {
       const { email, role } = req.body;
       return res
         .status(200)
-        .json({ email, role, message: "Login successfull" });
+        .json({ email, role,success:1, message: "Login successfull" });
     } else {
       return res.json({ success: 0, message: "Invalid email or password" });
     }
