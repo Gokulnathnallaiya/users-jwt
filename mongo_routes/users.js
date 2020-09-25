@@ -5,6 +5,16 @@ const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 
 //create new user
 router.post("/register", async (req, res) => {
+  const user = await User.find({
+    email: req.body.email,
+    
+  });
+  if (user.length>1){
+    return res.status(404).json({
+      success:0,
+      message: 'user already registered'
+    })
+  }
   const salt = genSaltSync(10);
   req.body.password = hashSync(req.body.password, salt);
 
