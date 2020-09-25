@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
     
   });
   if (users.length>1){
-    return res.status(404).json({
+    return res.status(200).json({
       success:0,
       message: 'user already registered'
     })
