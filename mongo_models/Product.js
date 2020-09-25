@@ -11,7 +11,7 @@ const ProductSchema = mongoose.Schema({
         required:true,
 
     },
-    availablestock:{
+    stock:{
         type:Number,
         required:true,
     },

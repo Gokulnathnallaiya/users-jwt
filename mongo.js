@@ -7,7 +7,7 @@ var cors = require('cors');
 
 //import Routes
 
-const postRoutes = require('./mongo_routes/posts');
+const productRoutes = require('./mongo_routes/products');
 const userRoutes = require('./mongo_routes/users');
 
 //middle wares
@@ -16,7 +16,7 @@ const userRoutes = require('./mongo_routes/users');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/posts',postRoutes);
+app.use('/products',productRoutes);
 app.use('/user',userRoutes);
 
 const port = process.env.PORT || 3000;
