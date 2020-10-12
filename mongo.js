@@ -3,6 +3,7 @@ const app = express();
 require('dotenv/config');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 var cors = require('cors');
 
 //import Routes
@@ -12,12 +13,14 @@ const userRoutes = require('./mongo_routes/users');
 
 //middle wares
 
-
+app.use(passport.initialize());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/products',productRoutes);
-app.use('/user',userRoutes);
+app.use('',userRoutes);
+
+
 
 const port = process.env.PORT || 3000;
 
