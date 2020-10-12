@@ -12,8 +12,16 @@ const productRoutes = require('./mongo_routes/products');
 const userRoutes = require('./mongo_routes/users');
 
 //middle wares
-app.use(cors());
+
 app.use(passport.initialize());
+
+app.use(
+    cors({
+      origin: "http://localhost:3000", // allow to server to accept request from different origin
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true // allow session cookie from browser to pass through
+    })
+  );
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
