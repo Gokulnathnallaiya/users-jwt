@@ -4,6 +4,8 @@ const router = express.Router();
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+var cors = require('cors');
+
 
 let user = {};
 router.use(passport.initialize());

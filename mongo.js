@@ -12,9 +12,9 @@ const productRoutes = require('./mongo_routes/products');
 const userRoutes = require('./mongo_routes/users');
 
 //middle wares
-
-app.use(passport.initialize());
 app.use(cors());
+app.use(passport.initialize());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/products',productRoutes);
