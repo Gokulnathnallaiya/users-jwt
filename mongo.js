@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/products',productRoutes);
 app.use('/',paymentRoutes);
-app.use('',userRoutes);
+app.use('/user',userRoutes);
 
 
 

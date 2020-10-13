@@ -40,7 +40,9 @@ router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
       email: req.body.email,
+      
     });
+    console.log(user)
     const passwordMatch = compareSync(req.body.password, user.password);
 
     if (user && passwordMatch) {
@@ -52,6 +54,7 @@ router.post("/login", async (req, res) => {
       return res.json({ success: 0, message: "Invalid email or password" });
     }
   } catch (err) {
+    console.log(err)
     res.json({
       message: "An error occured",
     });
