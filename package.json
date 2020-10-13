@@ -25,7 +25,8 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "query-string": "^6.13.5",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^8.111.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
